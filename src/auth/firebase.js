@@ -1,10 +1,13 @@
-import { async } from '@firebase/util';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -20,13 +23,17 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
-export const createUser = async (email, password, navigate) => {
+export const createUser = async (email, password, displayName, navigate) => {
   try {
     let userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
+    await updateProfile(auth.currentUser, {
+      displayName: displayName,
+    });
+
     navigate('/');
     console.log(userCredential);
   } catch (error) {
@@ -51,4 +58,29 @@ export const signIn = async (email, password, navigate) => {
 export const logOut = () => {
   signOut(auth);
   alert('logged Out');
+};
+
+export const userObserver = (setCurrentUser) => {
+  onAuthStateChanged(auth, (currentUser) => {
+    if (currentUser) {
+      // User is signed in, see docs for a list of available properties
+      setCurrentUser(currentUser);
+    } else {
+      // User is signed out
+      setCurrentUser(false);
+    }
+  });
+};
+
+//signup with google acc
+export const signUpProvider = (navigate) => {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log(result);
+      navigate('/');
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };

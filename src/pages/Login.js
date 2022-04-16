@@ -1,7 +1,7 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { useState } from 'react';
-import { signIn } from '../auth/firebase';
+import { signIn, signUpProvider } from '../auth/firebase';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -14,6 +14,9 @@ const Login = () => {
     console.log(email, password);
     setEmail('');
     setPassword('');
+  };
+  const handleProviderLogin = () => {
+    signUpProvider(navigate);
   };
   return (
     <div className="d-flex justify-content-center ">
@@ -53,7 +56,10 @@ const Login = () => {
             value="Login"
           />
         </form>
-        <button className="btn btn-primary form-control">
+        <button
+          className="btn btn-primary form-control"
+          onClick={handleProviderLogin}
+        >
           <FcGoogle /> Continue with Google
         </button>
       </div>
