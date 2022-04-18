@@ -3,6 +3,7 @@ import Main from '../pages/Main';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Navbar from '../components/Navbar';
+import MovieDetails from '../pages/MovieDetails';
 
 const AppRouter = () => {
   return (
@@ -12,6 +13,7 @@ const AppRouter = () => {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/details/:id" element={<MovieDetails />} />
       </Routes>
     </Router>
   );
