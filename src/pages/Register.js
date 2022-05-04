@@ -12,7 +12,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createUser(email, password, displayName, navigate);
-    console.log(firstName, lastName, email);
+    // console.log(firstName, lastName, email);
     setFirstName('');
     setLastName('');
     setEmail('');

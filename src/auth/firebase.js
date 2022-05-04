@@ -35,7 +35,7 @@ export const createUser = async (email, password, displayName, navigate) => {
     });
 
     navigate('/');
-    console.log(userCredential);
+    // console.log(userCredential);
   } catch (error) {
     alert(error.message);
   }
@@ -49,7 +49,7 @@ export const signIn = async (email, password, navigate) => {
       password
     );
     navigate('/');
-    console.log(userCredential);
+    // console.log(userCredential);
   } catch (error) {
     alert(error.message);
   }
@@ -77,7 +77,7 @@ export const signUpProvider = (navigate) => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       navigate('/');
     })
     .catch((error) => {
