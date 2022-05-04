@@ -1,4 +1,5 @@
 {
+  "homepage": "https://Omer-Cicek.github.io/movie_app_firebase",
   "name": "movie_app_firebase",
   "version": "0.1.0",
   "private": true,
@@ -10,6 +11,7 @@
     "bootstrap": "^5.1.3",
     "dotenv": "^16.0.0",
     "firebase": "^9.6.10",
+    "gh-pages": "^3.2.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.3.1",
@@ -21,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build",
+    "predeploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
